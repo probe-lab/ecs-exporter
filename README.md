@@ -3,6 +3,13 @@
 [![Build Status](https://github.com/prometheus-community/ecs_exporter/actions/workflows/ci.yml/badge.svg)](https://github.com/prometheus-community/ecs_exporter/actions/workflows/ci.yml)
 [![Go package](https://pkg.go.dev/badge/github.com/probe-lab/ecs-exporter?status.svg)](https://pkg.go.dev/github.com/probe-lab/ecs-exporter)
 
+> [!NOTE]
+> **Why this fork?**
+> 
+> github.com/prometheus-community/ecs_exporter has a dependency on github.com/aws/amazon-ecs-agent which in turn depends on a github.com/docker/docker version that's incompatible with the one that's used by our clickhouse client. Clickhouse is more up-to-date. the ECS Exporter only uses the amazon-ecs-agent dependency to import structs that make parsing JSON responses from the docker and AWS APIs easier. In our ECS Exporter fork we removed the amazon-ecs-agent dependency by copying the relevant structs into the repo itself. This eliminated the amazon-ecs-agent dependency in the ECS Exporter and allowed us to bump the direct github.com/docker/docker dependency to a version which is compatible with the Clickhouse dependency here.
+
+
+
 This repo contains a Prometheus exporter for Amazon Elastic Container Service
 (ECS) that publishes [ECS task infra
 metrics](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v4.html)
