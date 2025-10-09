@@ -3,7 +3,7 @@ go:
     # .circle/config.yml should also be updated.
     version: 1.24
 repository:
-    path: github.com/prometheus-community/ecs_exporter
+    path: github.com/probe-lab/ecs-exporter
 build:
     ldflags: |
         -X github.com/prometheus/common/version.Version={{.Version}}

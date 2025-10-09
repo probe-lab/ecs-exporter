@@ -29,8 +29,8 @@ import (
 	"github.com/prometheus/exporter-toolkit/web"
 	"github.com/prometheus/exporter-toolkit/web/kingpinflag"
 
-	"github.com/prometheus-community/ecs_exporter/ecscollector"
-	"github.com/prometheus-community/ecs_exporter/ecsmetadata"
+	"github.com/probe-lab/ecs-exporter/ecscollector"
+	"github.com/probe-lab/ecs-exporter/ecsmetadata"
 )
 
 const exporter = "ecs_exporter"

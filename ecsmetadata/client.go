@@ -24,7 +24,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/prometheus-community/ecs_exporter/ecsagent/v4"
+	"github.com/probe-lab/ecs-exporter/ecsagent/v4"
 )
 
 type Client struct {

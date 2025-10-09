@@ -25,7 +25,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/prometheus-community/ecs_exporter/ecsmetadata"
+	"github.com/probe-lab/ecs-exporter/ecsmetadata"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/client_golang/prometheus/testutil"

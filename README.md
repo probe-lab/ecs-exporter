@@ -1,7 +1,7 @@
 # ecs_exporter
 
 [![CircleCI](https://circleci.com/gh/prometheus-community/ecs_exporter/tree/main.svg?style=svg)](https://circleci.com/gh/prometheus-community/ecs_exporter/tree/main)
-[![Go package](https://pkg.go.dev/badge/github.com/prometheus-community/ecs_exporter?status.svg)](https://pkg.go.dev/github.com/prometheus-community/ecs_exporter)
+[![Go package](https://pkg.go.dev/badge/github.com/probe-lab/ecs-exporter?status.svg)](https://pkg.go.dev/github.com/probe-lab/ecs-exporter)
 
 This repo contains a Prometheus exporter for Amazon Elastic Container Service
 (ECS) that publishes [ECS task infra
@@ -25,7 +25,7 @@ To add ECS exporter to your existing ECS task:
 1. Scroll down to "Container definitions" and click on "Add container".
 1. Set "ecs-exporter" as container name.
 1. Copy the container image URL from above. (Use the tag for the [latest
-   release](https://github.com/prometheus-community/ecs_exporter/releases).)
+   release](https://github.com/probe-lab/ecs-exporter/releases).)
 1. Add tcp/9779 as a port mapping.
 1. Click on "Add" to return back to task definition page.
 1. Click on "Create" to create a new revision.
@@ -36,7 +36,7 @@ By default, it publishes Prometheus metrics on ":9779/metrics". The exporter in 
 All metrics exported by ecs_exporter are sourced from the [ECS task metadata
 API](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v4.html)
 accessible from within every ECS task. AWS can make, and on occasion [has
-made](https://github.com/prometheus-community/ecs_exporter/issues/74#issuecomment-2395293862),
+made](https://github.com/probe-lab/ecs-exporter/issues/74#issuecomment-2395293862),
 unannounced (or at least unversioned) breaking changes to the data served from
 this API, especially the container-level stats served from the `/task/stats`
 endpoint. Metrics emitted by ecs_exporter may spontaneously break as a result,
@@ -45,7 +45,7 @@ in which case we may need to make breaking changes to ecs_exporter to keep up.
 In light of these conditions, we currently do not have plans to cut a 1.0
 release. When necessary, breaking changes will continue to land in minor version
 releases. The [release
-notes](https://github.com/prometheus-community/ecs_exporter/releases) will
+notes](https://github.com/probe-lab/ecs-exporter/releases) will
 document any breaking changes as they come.
 
 ## Labels

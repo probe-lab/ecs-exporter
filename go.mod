@@ -1,4 +1,4 @@
-module github.com/prometheus-community/ecs_exporter
+module github.com/probe-lab/ecs-exporter
 
 go 1.24.0
 
@@ -37,6 +37,5 @@ require (
 	golang.org/x/sys v0.37.0 // indirect
 	golang.org/x/text v0.30.0 // indirect
 	google.golang.org/protobuf v1.36.10 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gotest.tools/v3 v3.5.0 // indirect
 )

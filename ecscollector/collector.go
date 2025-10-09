@@ -20,7 +20,7 @@ import (
 	"log/slog"
 
 	"github.com/docker/docker/api/types/container"
-	"github.com/prometheus-community/ecs_exporter/ecsmetadata"
+	"github.com/probe-lab/ecs-exporter/ecsmetadata"
 	"github.com/prometheus/client_golang/prometheus"
 )
 
