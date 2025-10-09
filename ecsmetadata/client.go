@@ -24,7 +24,7 @@ import (
 	"net/url"
 	"os"
 
-	tmdsv4 "github.com/aws/amazon-ecs-agent/ecs-agent/tmds/handlers/v4/state"
+	"github.com/prometheus-community/ecs_exporter/ecsagent/v4"
 )
 
 type Client struct {
@@ -58,14 +58,14 @@ func NewClientFromEnvironment() (*Client, error) {
 	return NewClient(endpoint), nil
 }
 
-func (c *Client) RetrieveTaskStats(ctx context.Context) (map[string]*tmdsv4.StatsResponse, error) {
+func (c *Client) RetrieveTaskStats(ctx context.Context) (map[string]*v4.StatsResponse, error) {
 	// https://github.com/aws/amazon-ecs-agent/blob/cf8c7a6b65043c550533f330b10aef6d0a342214/agent/handlers/v4/tmdsstate.go#L202
-	out := make(map[string]*tmdsv4.StatsResponse)
+	out := make(map[string]*v4.StatsResponse)
 	err := c.request(ctx, c.endpoint+"/task/stats", &out)
 	return out, err
 }
 
-func (c *Client) RetrieveTaskMetadata(ctx context.Context) (*tmdsv4.TaskResponse, error) {
+func (c *Client) RetrieveTaskMetadata(ctx context.Context) (*v4.TaskResponse, error) {
 	// https://github.com/aws/amazon-ecs-agent/blob/cf8c7a6b65043c550533f330b10aef6d0a342214/agent/handlers/v4/tmdsstate.go#L174
 	//
 	// Note that EC2, Fargate, and Managed Instances return slightly different
@@ -76,7 +76,7 @@ func (c *Client) RetrieveTaskMetadata(ctx context.Context) (*tmdsv4.TaskResponse
 	//
 	// But `TaskResponse` is the _union_ of these responses. It has all the
 	// fields.
-	var out tmdsv4.TaskResponse
+	var out v4.TaskResponse
 	err := c.request(ctx, c.endpoint+"/task", &out)
 	return &out, err
 }
