@@ -17,7 +17,7 @@ package v2
 import (
 	"time"
 
-	"github.com/prometheus-community/ecs_exporter/ecsagent"
+	"github.com/probe-lab/ecs-exporter/ecsagent"
 )
 
 // TaskResponse defines the schema for the task response JSON object

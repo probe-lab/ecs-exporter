@@ -1,4 +1,4 @@
-module github.com/prometheus-community/ecs_exporter
+module github.com/probe-lab/ecs-exporter
 
 go 1.26.0
 

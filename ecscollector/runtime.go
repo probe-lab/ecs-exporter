@@ -17,7 +17,7 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/prometheus-community/ecs_exporter/ecsmetadata"
+	"github.com/probe-lab/ecs-exporter/ecsmetadata"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

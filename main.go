@@ -25,8 +25,8 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/exporter-toolkit/bootstrap"
 
-	"github.com/prometheus-community/ecs_exporter/ecscollector"
-	"github.com/prometheus-community/ecs_exporter/ecsmetadata"
+	"github.com/probe-lab/ecs-exporter/ecscollector"
+	"github.com/probe-lab/ecs-exporter/ecsmetadata"
 )
 
 const exporter = "ecs_exporter"

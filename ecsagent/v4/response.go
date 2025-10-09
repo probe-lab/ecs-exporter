@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/docker/docker/api/types/container"
-	"github.com/prometheus-community/ecs_exporter/ecsagent"
-	v2 "github.com/prometheus-community/ecs_exporter/ecsagent/v2"
+	"github.com/probe-lab/ecs-exporter/ecsagent"
+	v2 "github.com/probe-lab/ecs-exporter/ecsagent/v2"
 )
 
 const (
