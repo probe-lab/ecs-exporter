@@ -1,4 +1,4 @@
-// https://github.com/aws/amazon-ecs-agent/blob/6f0415557e583614dcd54c6547ef6ad01ade1a90/ecs-agent/tmds/handlers/v4/state/response.go#L13
+// https://github.com/aws/amazon-ecs-agent/blob/3def019fc9fa/ecs-agent/tmds/handlers/v4/state/response.go#L13
 package v4
 
 import (
@@ -21,11 +21,13 @@ type TaskResponse struct {
 	Containers              []ContainerResponse      `json:"Containers,omitempty"`
 	VPCID                   string                   `json:"VPCID,omitempty"`
 	ServiceName             string                   `json:"ServiceName,omitempty"`
+	Group                   string                   `json:"Group,omitempty"`
 	ClockDrift              *ClockDrift              `json:"ClockDrift,omitempty"`
 	EphemeralStorageMetrics *EphemeralStorageMetrics `json:"EphemeralStorageMetrics,omitempty"`
 	CredentialsID           string                   `json:"-"`
 	TaskNetworkConfig       *TaskNetworkConfig       `json:"-"`
 	FaultInjectionEnabled   bool                     `json:"FaultInjectionEnabled"`
+	AvailabilityZoneID      string                   `json:"AvailabilityZoneID,omitempty"`
 }
 
 // TaskNetworkConfig contains required network configurations for network faults injection.
