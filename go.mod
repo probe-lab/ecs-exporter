@@ -7,6 +7,7 @@ require (
 	github.com/docker/docker v28.5.2+incompatible
 	github.com/prometheus/client_golang v1.24.1
 	github.com/prometheus/exporter-toolkit v0.20.0
+	github.com/safchain/ethtool v0.7.0
 )
 
 require (

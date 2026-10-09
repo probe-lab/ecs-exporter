@@ -27,6 +27,7 @@ import (
 
 	"github.com/probe-lab/ecs-exporter/ecscollector"
 	"github.com/probe-lab/ecs-exporter/ecsmetadata"
+	"github.com/probe-lab/ecs-exporter/enacollector"
 )
 
 const exporter = "ecs_exporter"
@@ -57,6 +58,7 @@ func newMetricsHandler(b *bootstrap.Bootstrap) (http.Handler, error) {
 		return nil, fmt.Errorf("creating ECS metadata client: %w", err)
 	}
 	registry.MustRegister(ecscollector.NewCollector(client, b.Logger))
+	registry.MustRegister(enacollector.NewCollector(b.Logger))
 
 	handler := promhttp.HandlerFor(registry, promhttp.HandlerOpts{
 		MaxRequestsInFlight: b.MaxRequests,
