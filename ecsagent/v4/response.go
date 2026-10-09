@@ -140,5 +140,5 @@ type NetworkInterfaceProperties struct {
 // StatsResponse is the v4 Stats response for a container.
 type StatsResponse struct {
 	*container.StatsResponse
-	Network_rate_stats *ecsagent.NetworkStatsPerSec `json:"network_rate_stats,omitempty"`
+	Network_rate_stats *ecsagent.NetworkStatsPerSec `json:"network_rate_stats,omitempty"` //nolint:revive // name copied from ecs-agent
 }

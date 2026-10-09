@@ -28,7 +28,7 @@ type PortResponse struct {
 	ContainerPort uint16 `json:"ContainerPort,omitempty"`
 	Protocol      string `json:"Protocol,omitempty"`
 	HostPort      uint16 `json:"HostPort,omitempty"`
-	HostIp        string `json:"HostIp,omitempty"`
+	HostIp        string `json:"HostIp,omitempty"` //nolint:revive // name copied from ecs-agent
 }
 
 // Network is a struct that keeps track of metadata of a network interface
