@@ -100,6 +100,48 @@ the task-level limit is used instead. That fallback value is shared capacity and
 must not be summed across containers as if it were independently reserved for
 each one.
 
+## ENA allowance metrics
+
+This section only applies to the probe-lab fork.
+
+The `enacollector` package exports the allowance counters of the AWS Elastic
+Network Adapter (ENA) driver. AWS queues and then drops packets when the
+traffic of an instance goes above a network maximum of its instance type, and
+these counters show when that happens. The ECS task metadata API does not
+serve them. The collector reads them with ethtool from each network interface
+that uses the `ena` driver, which gives the same values as `ethtool -S
+<interface>`. AWS describes each counter in [Monitor network performance for
+ENA
+settings](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-network-performance-ena.html).
+
+| Metric | Type | ethtool statistic |
+|---|---|---|
+| `ecs_network_bw_in_allowance_exceeded_total` | counter | `bw_in_allowance_exceeded` |
+| `ecs_network_bw_out_allowance_exceeded_total` | counter | `bw_out_allowance_exceeded` |
+| `ecs_network_pps_allowance_exceeded_total` | counter | `pps_allowance_exceeded` |
+| `ecs_network_conntrack_allowance_exceeded_total` | counter | `conntrack_allowance_exceeded` |
+| `ecs_network_conntrack_allowance_available` | gauge | `conntrack_allowance_available` |
+| `ecs_network_linklocal_allowance_exceeded_total` | counter | `linklocal_allowance_exceeded` |
+
+All metrics have the `interface` label.
+
+Some notes on the metrics:
+* The collector can only read an ENA interface that is in the network namespace
+of the container. The `awsvpc` and `host` network modes give the container
+this access. With the `bridge` network mode, the container only sees a virtual
+interface and the metrics are absent.
+* On Fargate platform version 1.4.0, the task network interface `eth1` uses the
+`ena` driver, so the metrics are available there.
+* The metrics need ENA driver 2.2.10 or later. The
+`ecs_network_conntrack_allowance_available` metric needs driver 2.8.1 or later
+and a Nitro-based instance. The collector skips each counter that the driver
+does not report.
+* The counters reset to zero when the driver resets.
+* The ethtool calls do not need the `NET_ADMIN` capability.
+* The ecs_exporter binary registers the collector by default. To embed it, call
+`enacollector.NewCollector(logger)` and register the result next to the ECS
+collector.
+
 ## Example output
 
 Check out the [metrics snapshots](./ecscollector/testdata/snapshots) which
